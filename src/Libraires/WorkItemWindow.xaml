@@ -1,0 +1,24 @@
+﻿<Window x:Class="CP.TfsAssistant.Libraires.WorkItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" WindowStartupLocation="CenterScreen" SizeToContent="Height">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Height" Value="28" />
+                <Setter Property="Margin" Value="3 0" />
+                <Setter Property="Padding" Value="20 0" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ContentControl Grid.Row="0" x:Name="ContentControl"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 12">
+            <Button Content="Save" Click="SaveButton_Click" />
+            <Button Content="Save and close" Click="SaveAndCloseButton_Click" />
+            <Button Content="Cancel" Click="CancelButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

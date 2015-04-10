@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CP.TfsAssistant.Libraires", "src\Libraires\CP.TfsAssistant.Libraires.csproj", "{34291D75-A970-4A51-97CF-66F901C00722}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CP.TfsAssistant.WpfClient", "src\WpfClient\CP.TfsAssistant.WpfClient.csproj", "{FCB9E3CB-4F72-491F-AE06-58A69C1A1FA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CP.TfsAssistant.OutlookAddIn", "src\OutlookAddIn\CP.TfsAssistant.OutlookAddIn.csproj", "{CBE951A8-C893-48BB-906B-39A2328DD9D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34291D75-A970-4A51-97CF-66F901C00722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34291D75-A970-4A51-97CF-66F901C00722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34291D75-A970-4A51-97CF-66F901C00722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34291D75-A970-4A51-97CF-66F901C00722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCB9E3CB-4F72-491F-AE06-58A69C1A1FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCB9E3CB-4F72-491F-AE06-58A69C1A1FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCB9E3CB-4F72-491F-AE06-58A69C1A1FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCB9E3CB-4F72-491F-AE06-58A69C1A1FA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBE951A8-C893-48BB-906B-39A2328DD9D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBE951A8-C893-48BB-906B-39A2328DD9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBE951A8-C893-48BB-906B-39A2328DD9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBE951A8-C893-48BB-906B-39A2328DD9D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
