@@ -11,23 +11,34 @@ namespace CP.TfsAssistant.OutlookAddIn
 {
     public partial class TfsRibbon
     {
-        private Explorer _explorer;
+        private MailItem _mailItem;
 
         private void TfsRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-            _explorer = Globals.ThisAddIn.Application.ActiveExplorer();
-            _explorer.SelectionChange += ExplorerSelectionChange;
+            if (this.RibbonId == "Microsoft.Outlook.Explorer")
+            {
+                Explorer explorer = Globals.ThisAddIn.Application.ActiveExplorer();
+                explorer.SelectionChange += ExplorerSelectionChange;
+            }
+            else if (this.RibbonId == "Microsoft.Outlook.Mail.Read")
+            {
+                Inspector inspector = Globals.ThisAddIn.Application.ActiveInspector();
+                _mailItem = inspector.CurrentItem as MailItem;
+            }
         }
 
         private void ExplorerSelectionChange()
         {
+            _mailItem = null;
+            Explorer explorer = Globals.ThisAddIn.Application.ActiveExplorer();
             bool isSingleMailItemSelected = false;
-            if (_explorer.Selection.Count == 1)
+            if (explorer.Selection.Count == 1)
             {
-                var selected = _explorer.Selection[1];
+                var selected = explorer.Selection[1];
                 if (selected is Microsoft.Office.Interop.Outlook.MailItem)
                 {
                     isSingleMailItemSelected = true;
+                    _mailItem = selected as MailItem;
                 }
             }
 
@@ -42,16 +53,15 @@ namespace CP.TfsAssistant.OutlookAddIn
 
         private void NewItemFromMailButton_Click(object sender, RibbonControlEventArgs e)
         {
-            var mailItem = _explorer.Selection[1] as MailItem;
-            if (mailItem == null)
+            if (_mailItem == null)
             {
                 return;
             }
 
             EnsureSettingsValid();
 
-            StringBuilder body = new StringBuilder(mailItem.HTMLBody);
-            foreach (Attachment attachment in mailItem.Attachments)
+            StringBuilder body = new StringBuilder(_mailItem.HTMLBody);
+            foreach (Attachment attachment in _mailItem.Attachments)
             {
                 var fileName = attachment.FileName;
                 if (IsImageFileExtension(Path.GetExtension(fileName)))
@@ -70,7 +80,7 @@ namespace CP.TfsAssistant.OutlookAddIn
             var settings = MySettingsManager.GetSettings<TfsSettings>();
             var fields = new Dictionary<string, object>();
             fields.Add(settings.FieldRefNameForMailBody, body.ToString());
-            UIHelper.OpenWorkItemForm(settings.WorkItemType, mailItem.Subject, fields);
+            UIHelper.OpenWorkItemForm(settings.WorkItemType, _mailItem.Subject, fields);
         }
 
         private bool IsImageFileExtension(string extension)
